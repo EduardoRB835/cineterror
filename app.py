@@ -16,8 +16,8 @@ peliculas = {
 }
 
 # Configuración de correo (modifica con tus datos)
-EMAIL = 'rojasbautistae02@gmail.com'  # Cambia esto a tu correo
-PASSWORD = 'qgfh aexm jmqb uvjr'  # Cambia esto a tu contraseña
+EMAIL = 'terrorcine75@gmail.com'  # Cambia esto a tu correo
+PASSWORD = 'tulz cuyr qurc bzxx'  # Cambia esto a tu contraseña
 
 def enviar_correo_reserva(nombre, correo, pelicula, boletos, img_str):
     msg = MIMEMultipart()
