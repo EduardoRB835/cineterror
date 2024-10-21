@@ -1,13 +1,20 @@
+/* Estilos generales para pantallas grandes */
 body {
     font-family: 'Arial', sans-serif;
     background-color: #121212;
     color: #fff;
     text-align: center;
+    margin: 0; /* Quitar margen por defecto */
+}
+
+header {
+    background-color: #1e1e1e;
+    padding: 20px 0;
 }
 
 h1 {
     color: #f44336;
-    margin: 20px 0;
+    margin: 0;
 }
 
 .cartelera {
@@ -23,7 +30,7 @@ h1 {
     border-radius: 8px;
     margin: 15px;
     padding: 20px;
-    width: 220px; /* Aumentar el ancho para más espacio */
+    width: 240px; /* Aumentar el ancho para más espacio */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
     transition: transform 0.2s, box-shadow 0.2s; /* Añadir efecto al pasar el mouse */
 }
@@ -56,4 +63,107 @@ a.reservar-btn {
 
 a.reservar-btn:hover {
     background-color: #388e3c; /* Color más oscuro al pasar el mouse */
+}
+
+.container {
+    width: 90%;
+    max-width: 600px; /* Limitar el ancho del contenedor */
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1e1e1e; /* Fondo oscuro */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.content {
+    margin: 20px 0;
+    text-align: left; /* Alinear texto a la izquierda */
+}
+
+.available {
+    font-weight: bold;
+    color: #ffeb3b; /* Color amarillo para disponibilidad */
+}
+
+.reservation-form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin: 10px 0 5px;
+    color: #ffeb3b; /* Color amarillo para las etiquetas */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid #444; /* Borde más suave */
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 16px;
+    background-color: #2e2e2e; /* Fondo oscuro para los campos */
+    color: #fff; /* Texto blanco */
+}
+
+.submit-btn {
+    background-color: #4caf50; /* Verde para el botón */
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+    background-color: #388e3c; /* Color más oscuro al pasar el mouse */
+}
+
+/* Media Queries para dispositivos más pequeños */
+@media (max-width: 768px) {
+    .cartelera {
+        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
+        align-items: center; /* Centrar elementos */
+    }
+
+    .pelicula {
+        width: 90%; /* Ancho del 90% en pantallas pequeñas */
+        margin: 10px 0; /* Margen ajustado */
+    }
+
+    h1 {
+        font-size: 24px; /* Tamaño de fuente más pequeño para el título */
+    }
+
+    a.reservar-btn {
+        width: 100%; /* Botón ocupa todo el ancho */
+        padding: 15px; /* Más espacio en el botón */
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 20px; /* Tamaño de fuente aún más pequeño para el título */
+    }
+
+    .pelicula {
+        padding: 15px; /* Menos padding en pantallas más pequeñas */
+    }
+
+    label {
+        font-size: 14px; /* Tamaño de fuente más pequeño para etiquetas */
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+        font-size: 14px; /* Tamaño de fuente más pequeño para inputs */
+    }
+
+    .submit-btn {
+        font-size: 14px; /* Tamaño de fuente más pequeño para el botón */
+    }
 }

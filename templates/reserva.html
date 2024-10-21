@@ -7,19 +7,25 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Reservar {{ pelicula }}</h1>
-    <p>Boletos disponibles: {{ disponible }}</p>
-    <form method="post">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required>
-        <br>
-        <label for="correo">Correo Electrónico:</label>
-        <input type="email" id="correo" name="correo" required>
-        <br>
-        <label for="boletos">Número de boletos:</label>
-        <input type="number" id="boletos" name="boletos" min="1" max="{{ disponible }}" required>
-        <br>
-        <button type="submit">Reservar</button>
-    </form>
+    <div class="container">
+        <header>
+            <h1>Reservar {{ pelicula }}</h1>
+        </header>
+        <div class="content">
+            <p>Boletos disponibles: <span class="available">{{ disponible }}</span></p>
+            <form method="post" class="reservation-form">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+
+                <label for="boletos">Número de boletos:</label>
+                <input type="number" id="boletos" name="boletos" min="1" max="{{ [5, disponible] | min }}" required>
+
+                <button type="submit" class="submit-btn">Reservar</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

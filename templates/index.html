@@ -7,14 +7,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Cartelera de Películas</h1>
+    <header>
+        <h1>Cartelera de Películas</h1>
+    </header>
     <div class="cartelera">
         {% for pelicula, info in peliculas.items() %}
         <div class="pelicula">
             <img src="{{ url_for('static', filename=info['imagen']) }}" alt="{{ pelicula }}">
             <h2>{{ pelicula }}</h2>
-            <p>Hora: {{ info['hora'] }}</p>
-            <p>Boletos disponibles: {{ info['disponible'] }}</p>
+            <p><strong>Hora:</strong> {{ info['hora'] }}</p>
+            <p><strong>Boletos disponibles:</strong> {{ info['disponible'] }}</p>
             <a href="{{ url_for('reservar', pelicula=pelicula) }}" class="reservar-btn">Reservar</a>
         </div>
         {% endfor %}
