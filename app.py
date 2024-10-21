@@ -16,14 +16,13 @@ peliculas = {
 }
 
 # Configuración de correo (modifica con tus datos)
-EMAIL = 'rojasbautistae02@gmail.com'
-PASSWORD = 'qgfh aexm jmqb uvjr'
-DESTINATARIO = 'rojasbautistae02@gmail.com'
+EMAIL = 'rojasbautistae02@gmail.com'  # Cambia esto a tu correo
+PASSWORD = 'qgfh aexm jmqb uvjr'  # Cambia esto a tu contraseña
 
-def enviar_correo_reserva(nombre, pelicula, boletos, img_str):
+def enviar_correo_reserva(nombre, correo, pelicula, boletos, img_str):
     msg = MIMEMultipart()
-    msg['From'] = EMAIL
-    msg['To'] = DESTINATARIO
+    msg['From'] = EMAIL  # Remitente sigue siendo tu correo para autenticación
+    msg['To'] = correo  # Usar el correo del usuario
     msg['Subject'] = f'Nueva reserva de {nombre} para {pelicula}'
 
     # Texto del correo
@@ -39,7 +38,7 @@ def enviar_correo_reserva(nombre, pelicula, boletos, img_str):
         with smtplib.SMTP('smtp.gmail.com', 587) as server:
             server.starttls()
             server.login(EMAIL, PASSWORD)
-            server.sendmail(EMAIL, DESTINATARIO, msg.as_string())
+            server.sendmail(EMAIL, correo, msg.as_string())  # Enviar al correo del usuario
             print('Correo enviado con éxito.')
     except Exception as e:
         print(f'Error al enviar el correo: {e}')
@@ -54,6 +53,7 @@ def index():
 def reservar(pelicula):
     if request.method == 'POST':
         nombre = request.form['nombre']
+        correo = request.form['correo']  # Capturar el correo ingresado por el usuario
         boletos = int(request.form['boletos'])
 
         if peliculas[pelicula]['disponible'] >= boletos:
@@ -70,7 +70,7 @@ def reservar(pelicula):
             img_base64 = base64.b64encode(img_byte_arr.getvalue()).decode('utf-8')
 
             # Enviar correo
-            enviar_correo_reserva(nombre, pelicula, boletos, img_byte_arr.getvalue())
+            enviar_correo_reserva(nombre, correo, pelicula, boletos, img_byte_arr.getvalue())
 
             # Mostrar el código QR en la página
             return render_template('qr.html', img_str=img_base64)
