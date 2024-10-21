@@ -1,20 +1,22 @@
 /* Estilos generales para pantallas grandes */
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #121212;
+    background-color: #0d0d0d; /* Fondo oscuro como Cinépolis */
     color: #fff;
     text-align: center;
-    margin: 0; /* Quitar margen por defecto */
+    margin: 0;
 }
 
 header {
-    background-color: #1e1e1e;
+    background-color: #000; /* Encabezado negro */
     padding: 20px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Sombra suave */
 }
 
 h1 {
-    color: #f44336;
+    color: #ff4f00; /* Color similar al logo de Cinépolis */
     margin: 0;
+    font-size: 28px; /* Tamaño de fuente más grande */
 }
 
 .cartelera {
@@ -25,113 +27,62 @@ h1 {
 }
 
 .pelicula {
-    background: #1e1e1e; /* Fondo más oscuro para las tarjetas de películas */
-    border: 1px solid #444; /* Borde más suave */
+    background: #1a1a1a; /* Fondo más oscuro para las tarjetas de películas */
+    border: 1px solid #333; /* Borde oscuro */
     border-radius: 8px;
     margin: 15px;
     padding: 20px;
-    width: 240px; /* Aumentar el ancho para más espacio */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-    transition: transform 0.2s, box-shadow 0.2s; /* Añadir efecto al pasar el mouse */
+    width: 240px; /* Mantener ancho */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Sombra más pronunciada */
+    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .pelicula:hover {
-    transform: scale(1.05); /* Aumentar el tamaño al pasar el mouse */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.9); /* Aumentar la sombra */
+    transform: scale(1.05); /* Aumentar tamaño al pasar el mouse */
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.9);
 }
 
 .pelicula img {
     max-width: 100%;
     border-radius: 8px;
+    margin-bottom: 10px; /* Espacio entre la imagen y el título */
 }
 
 h2 {
     color: #ffeb3b; /* Color amarillo para el título */
     margin: 10px 0;
+    font-size: 20px; /* Tamaño de fuente del título */
+}
+
+p {
+    margin: 5px 0; /* Espaciado uniforme para párrafos */
 }
 
 a.reservar-btn {
     display: inline-block;
-    background-color: #4caf50; /* Verde para el botón */
+    background-color: #ff4f00; /* Color del botón similar al logo */
     color: #fff;
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 5px;
     margin-top: 10px;
-    transition: background-color 0.3s; /* Transición suave al cambiar de color */
-}
-
-a.reservar-btn:hover {
-    background-color: #388e3c; /* Color más oscuro al pasar el mouse */
-}
-
-.container {
-    width: 90%;
-    max-width: 600px; /* Limitar el ancho del contenedor */
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #1e1e1e; /* Fondo oscuro */
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-}
-
-.content {
-    margin: 20px 0;
-    text-align: left; /* Alinear texto a la izquierda */
-}
-
-.available {
-    font-weight: bold;
-    color: #ffeb3b; /* Color amarillo para disponibilidad */
-}
-
-.reservation-form {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
-    margin: 10px 0 5px;
-    color: #ffeb3b; /* Color amarillo para las etiquetas */
-}
-
-input[type="text"],
-input[type="email"],
-input[type="number"] {
-    padding: 10px;
-    border: 1px solid #444; /* Borde más suave */
-    border-radius: 5px;
-    margin-bottom: 15px;
-    font-size: 16px;
-    background-color: #2e2e2e; /* Fondo oscuro para los campos */
-    color: #fff; /* Texto blanco */
-}
-
-.submit-btn {
-    background-color: #4caf50; /* Verde para el botón */
-    color: #fff;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
     transition: background-color 0.3s;
 }
 
-.submit-btn:hover {
-    background-color: #388e3c; /* Color más oscuro al pasar el mouse */
+a.reservar-btn:hover {
+    background-color: #d74500; /* Color más oscuro al pasar el mouse */
 }
 
 /* Media Queries para dispositivos más pequeños */
 @media (max-width: 768px) {
     .cartelera {
-        flex-direction: column; /* Cambiar a columna en pantallas pequeñas */
-        align-items: center; /* Centrar elementos */
+        flex-direction: column;
+        align-items: center;
     }
 
     .pelicula {
         width: 90%; /* Ancho del 90% en pantallas pequeñas */
-        margin: 10px 0; /* Margen ajustado */
+        margin: 10px 0; 
     }
 
     h1 {
@@ -139,31 +90,17 @@ input[type="number"] {
     }
 
     a.reservar-btn {
-        width: 100%; /* Botón ocupa todo el ancho */
-        padding: 15px; /* Más espacio en el botón */
+        width: 100%;
+        padding: 15px;
     }
 }
 
 @media (max-width: 480px) {
     h1 {
-        font-size: 20px; /* Tamaño de fuente aún más pequeño para el título */
+        font-size: 20px; /* Tamaño de fuente más pequeño para el título */
     }
 
     .pelicula {
-        padding: 15px; /* Menos padding en pantallas más pequeñas */
-    }
-
-    label {
-        font-size: 14px; /* Tamaño de fuente más pequeño para etiquetas */
-    }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="number"] {
-        font-size: 14px; /* Tamaño de fuente más pequeño para inputs */
-    }
-
-    .submit-btn {
-        font-size: 14px; /* Tamaño de fuente más pequeño para el botón */
+        padding: 15px; 
     }
 }

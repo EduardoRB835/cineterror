@@ -16,7 +16,8 @@
             <img src="{{ url_for('static', filename=info['imagen']) }}" alt="{{ pelicula }}">
             <h2>{{ pelicula }}</h2>
             <p><strong>Hora:</strong> {{ info['hora'] }}</p>
-            <p><strong>Boletos disponibles:</strong> {{ info['disponible'] }}</p>
+            <p><strong>Sala:</strong> SALA P</p> <!-- Agregado aquí -->
+            <p><strong>Boletos disponibles:</strong> <span class="available">{{ info['disponible'] }}</span></p>
             <a href="{{ url_for('reservar', pelicula=pelicula) }}" class="reservar-btn">Reservar</a>
         </div>
         {% endfor %}
