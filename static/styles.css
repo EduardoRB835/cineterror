@@ -1,0 +1,59 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    color: #fff;
+    text-align: center;
+}
+
+h1 {
+    color: #f44336;
+    margin: 20px 0;
+}
+
+.cartelera {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.pelicula {
+    background: #1e1e1e; /* Fondo más oscuro para las tarjetas de películas */
+    border: 1px solid #444; /* Borde más suave */
+    border-radius: 8px;
+    margin: 15px;
+    padding: 20px;
+    width: 220px; /* Aumentar el ancho para más espacio */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+    transition: transform 0.2s, box-shadow 0.2s; /* Añadir efecto al pasar el mouse */
+}
+
+.pelicula:hover {
+    transform: scale(1.05); /* Aumentar el tamaño al pasar el mouse */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.9); /* Aumentar la sombra */
+}
+
+.pelicula img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+h2 {
+    color: #ffeb3b; /* Color amarillo para el título */
+    margin: 10px 0;
+}
+
+a.reservar-btn {
+    display: inline-block;
+    background-color: #4caf50; /* Verde para el botón */
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s; /* Transición suave al cambiar de color */
+}
+
+a.reservar-btn:hover {
+    background-color: #388e3c; /* Color más oscuro al pasar el mouse */
+}
