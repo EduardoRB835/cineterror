@@ -10,7 +10,7 @@ import base64
 app = Flask(__name__)
 
 peliculas = {
-    'La Sutancia': {'hora': '10:00 a.m-12:20  p.m', 'disponible': 1, 'imagen': 'images/sustancia.webp'},
+    'La Sutancia': {'hora': '10:00 a.m-12:20  p.m', 'disponible': 82, 'imagen': 'images/sustancia.webp'},
     'Hereditary': {'hora': '12:30-14:30', 'disponible': 82, 'imagen': 'images/Hereditary.webp'},
     'La primera profecía': {'hora': '14:45-17:05', 'disponible': 82, 'imagen': 'images/la_primera_profecia.jpg'}
 }
