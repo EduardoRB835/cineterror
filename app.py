@@ -5,6 +5,7 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.mime.image import MIMEImage
+import base64
 
 app = Flask(__name__)
 
@@ -65,11 +66,14 @@ def reservar(pelicula):
             img.save(img_byte_arr, format='PNG')
             img_byte_arr.seek(0)  # Mover el puntero al inicio
 
+            # Convertir a Base64
+            img_base64 = base64.b64encode(img_byte_arr.getvalue()).decode('utf-8')
+
             # Enviar correo
             enviar_correo_reserva(nombre, pelicula, boletos, img_byte_arr.getvalue())
 
             # Mostrar el código QR en la página
-            return render_template('qr.html', img_str=img_byte_arr.getvalue())  # Cambiado aquí
+            return render_template('qr.html', img_str=img_base64)
 
         else:
             return f"Lo siento, solo quedan {peliculas[pelicula]['disponible']} boletos disponibles."
