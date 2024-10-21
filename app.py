@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, send_file
 import qrcode
 import io
 import smtplib
@@ -10,9 +10,9 @@ import base64
 app = Flask(__name__)
 
 peliculas = {
-    'Película 1': {'hora': '18:00', 'disponible': 82, 'imagen': 'images/sustancia.webp'},
-    'Película 2': {'hora': '20:00', 'disponible': 82, 'imagen': 'images/opcion2.webp'},
-    'Película 3': {'hora': '22:00', 'disponible': 82, 'imagen': 'images/Opcion1.jpg'}
+    'La Sutancia': {'hora': '10:00 a.m-12:20  p.m', 'disponible': 82, 'imagen': 'images/sustancia.webp'},
+    'Hereditary': {'hora': '12:30-14:30', 'disponible': 82, 'imagen': 'images/Hereditary.webp'},
+    'La primera profecía': {'hora': '14:45-17:05', 'disponible': 82, 'imagen': 'images/la_primera_profecia.jpg'}
 }
 
 # Configuración de correo (modifica con tus datos)
@@ -73,12 +73,27 @@ def reservar(pelicula):
             enviar_correo_reserva(nombre, correo, pelicula, boletos, img_byte_arr.getvalue())
 
             # Mostrar el código QR en la página
-            return render_template('qr.html', img_str=img_base64)
+            return render_template('qr.html', img_str=img_base64, info=peliculas[pelicula], pelicula=pelicula)
 
         else:
             return f"Lo siento, solo quedan {peliculas[pelicula]['disponible']} boletos disponibles."
 
     return render_template('reserva.html', pelicula=pelicula, disponible=peliculas[pelicula]['disponible'])
+
+
+@app.route('/descargar_qr/<pelicula>')
+def descargar_qr(pelicula):
+    # Generar el código QR
+    qr_data = f"Reserva para {peliculas[pelicula]['disponible']} boletos para {pelicula}"
+    img = qrcode.make(qr_data)
+
+    # Guardar el QR como un archivo en memoria
+    img_byte_arr = io.BytesIO()
+    img.save(img_byte_arr, format='PNG')
+    img_byte_arr.seek(0)
+
+    # Devolver el archivo como respuesta de descarga
+    return send_file(img_byte_arr, mimetype='image/png', as_attachment=True, download_name=f"qr_{pelicula}.png")
 
 
 if __name__ == '__main__':

@@ -4,10 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Código QR</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: linear-gradient(to bottom, #121212, #1c1c1c);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #ff4081; /* Color rosa para el título */
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8); /* Sombra para resaltar */
+        }
+        .container {
+            background-color: #2c2c2c; /* Fondo oscuro */
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+            max-width: 600px;
+            margin: auto;
+            overflow: hidden;
+            border: 2px solid #ff4081; /* Borde rosa */
+        }
+        .movie-title {
+            font-size: 1.8em;
+            color: #ffeb3b; /* Amarillo para el título de la película */
+            margin: 10px 0;
+            text-transform: uppercase; /* Texto en mayúsculas */
+        }
+        .movie-image {
+            max-width: 50%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 5px solid #ff4081; /* Borde alrededor de la imagen */
+        }
+        .qr-code {
+            width: 50%;
+            height: auto;
+            margin: 20px 0;
+            border: 2px dashed #ffeb3b; /* Borde punteado amarillo */
+            border-radius: 8px;
+            padding: 10px;
+            background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente */
+        }
+        .details {
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #f0f0f0; /* Color gris claro */
+        }
+        .download-btn {
+            background-color: #ff4081; /* Botón rosa */
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1.2em;
+            margin-top: 20px;
+            transition: background-color 0.3s; /* Transición suave para hover */
+        }
+        .download-btn:hover {
+            background-color: #f50057; /* Color más oscuro al pasar el mouse */
+        }
+        
+        /* Media Queries para pantallas más pequeñas */
+        @media (max-width: 600px) {
+            .movie-title {
+                font-size: 1.5em;
+            }
+            .qr-code {
+                width: 70%; /* Aumentar tamaño del QR en pantallas pequeñas */
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Tu reserva ha sido exitosa</h1>
-    <p>Muestra este código QR al llegar para pagar</p>
-    <img src="data:image/png;base64,{{ img_str }}" alt="Código QR">
+    <div class="container">
+        <h1>Tu reserva ha sido exitosa</h1>
+        <p>Muestra este código QR al llegar para pagar</p>
+        <div class="movie-info">
+            <img src="{{ url_for('static', filename=info['imagen']) }}" alt="Imagen de la película" class="movie-image">
+            <p class="movie-title">{{ pelicula }}</p>
+            <p class="details"><strong>Hora:</strong> {{ info['hora'] }}</p>
+            <p class="details"><strong>Lugar:</strong> SALA P</p>
+        </div>
+        <img src="data:image/png;base64,{{ img_str }}" alt="Código QR" class="qr-code">
+        <br>
+        <a href="/descargar_qr/{{ pelicula }}" class="download-btn">Descargar QR</a>
+    </div>
 </body>
 </html>
