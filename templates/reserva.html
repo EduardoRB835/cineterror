@@ -25,6 +25,14 @@
 
                 <button type="submit" class="submit-btn">Reservar</button>
             </form>
+            {% if disponible == 1 %}
+            <div class="no-tickets-message">
+                <p>¿No alcanzaste boleto? Comunícate con nosotros vía WhatsApp:</p>
+                <a href="https://wa.me/522474711117?text=Quiero%20ver%20la%20película%20{{ pelicula }}%20pero%20no%20alcancé%20boleto." class="whatsapp-link">
+                    Envíanos un mensaje
+                </a>
+            </div>
+            {% endif %}
         </div>
     </div>
 </body>
