@@ -55,7 +55,7 @@
             font-size: 1.1em;
             color: #f0f0f0; /* Color gris claro */
         }
-        .download-btn {
+        .download-btn, .exit-btn {
             background-color: #ff4081; /* Botón rosa */
             color: white;
             padding: 12px 25px;
@@ -66,8 +66,9 @@
             font-size: 1.2em;
             margin-top: 20px;
             transition: background-color 0.3s; /* Transición suave para hover */
+            display: inline-block; /* Para alinear horizontalmente */
         }
-        .download-btn:hover {
+        .download-btn:hover, .exit-btn:hover {
             background-color: #f50057; /* Color más oscuro al pasar el mouse */
         }
         
@@ -95,6 +96,8 @@
         <img src="data:image/png;base64,{{ img_str }}" alt="Código QR" class="qr-code">
         <br>
         <a href="/descargar_qr/{{ pelicula }}" class="download-btn">Descargar QR</a>
+        <br>
+        <a href="/" class="exit-btn">Salir</a> <!-- Botón para volver a index -->
     </div>
 </body>
 </html>

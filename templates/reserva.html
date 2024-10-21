@@ -4,7 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservar {{ pelicula }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212; /* Fondo oscuro */
+            color: #ffffff; /* Texto blanco */
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px; /* Ancho máximo del contenedor */
+            margin: 50px auto; /* Centrar contenedor verticalmente */
+            padding: 20px;
+            background-color: #1f1f1f; /* Fondo del contenedor */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7); /* Sombra */
+        }
+        header h1 {
+            text-align: center; /* Centrar título */
+            color: #ff4081; /* Color rosa para el título */
+            margin-bottom: 20px; /* Espaciado inferior */
+        }
+        .content {
+            padding: 10px; /* Espaciado interno */
+        }
+        .available {
+            font-weight: bold; /* Negrita para el número de boletos disponibles */
+            color: #ffeb3b; /* Amarillo para destacar */
+        }
+        label {
+            display: block; /* Cada etiqueta en una línea nueva */
+            margin-top: 15px; /* Espaciado superior */
+            font-size: 1.1em; /* Tamaño de fuente mayor */
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            width: 100%; /* Ancho completo */
+            padding: 10px; /* Espaciado interno */
+            margin-top: 5px; /* Espaciado superior */
+            border: 1px solid #ff4081; /* Borde rosa */
+            border-radius: 5px; /* Bordes redondeados */
+            background-color: #2c2c2c; /* Fondo oscuro para los campos */
+            color: #ffffff; /* Texto blanco */
+            font-size: 1em; /* Tamaño de fuente normal */
+        }
+        input[type="number"] {
+            max-width: 50%; /* Ancho máximo para el campo de boletos */
+        }
+        .submit-btn {
+            background-color: #ff4081; /* Color rosa para el botón */
+            color: white; /* Texto blanco */
+            padding: 12px 20px; /* Espaciado interno del botón */
+            border: none; /* Sin borde */
+            border-radius: 5px; /* Bordes redondeados */
+            cursor: pointer; /* Cambia el cursor a mano */
+            font-size: 1.2em; /* Tamaño de fuente mayor */
+            margin-top: 20px; /* Espaciado superior */
+            transition: background-color 0.3s; /* Transición suave */
+            display: block; /* Ocupa todo el ancho */
+            width: 100%; /* Ancho completo */
+        }
+        .submit-btn:hover {
+            background-color: #f50057; /* Color más oscuro al pasar el mouse */
+        }
+        .no-tickets-message {
+            margin-top: 20px; /* Espaciado superior */
+            text-align: center; /* Centrar el texto */
+            background-color: #ffeb3b; /* Fondo amarillo */
+            color: #121212; /* Texto oscuro */
+            padding: 10px; /* Espaciado interno */
+            border-radius: 5px; /* Bordes redondeados */
+        }
+        .whatsapp-link {
+            color: #4caf50; /* Color verde para el enlace de WhatsApp */
+            text-decoration: none; /* Sin subrayado */
+            font-weight: bold; /* Negrita */
+            display: inline-block; /* Para poder aplicar margen */
+            margin-top: 10px; /* Espaciado superior */
+        }
+        .whatsapp-link:hover {
+            text-decoration: underline; /* Subrayar al pasar el mouse */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
