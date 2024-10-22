@@ -59,17 +59,21 @@ def reservar(pelicula):
         if peliculas[pelicula]['disponible'] >= boletos:
             peliculas[pelicula]['disponible'] -= boletos
 
-            # Generar código QR
-            qr_data = f"Reserva de {nombre} para {pelicula}, {boletos} boletos"
+            # Generar código QR con toda la información necesaria
+            qr_data = (f"Reserva de {nombre} para {pelicula}\n"
+                       f"Boletos: {boletos}\n"
+                       f"Hora: {peliculas[pelicula]['hora']}\n"
+                       f"Lugar: SALA P")  # Agregar el lugar aquí
+
             img = qrcode.make(qr_data)
             img_byte_arr = io.BytesIO()
             img.save(img_byte_arr, format='PNG')
             img_byte_arr.seek(0)  # Mover el puntero al inicio
 
-            # Convertir a Base64
+            # Convertir a Base64 para mostrar en la página
             img_base64 = base64.b64encode(img_byte_arr.getvalue()).decode('utf-8')
 
-            # Enviar correo
+            # Enviar correo con el código QR adjunto
             enviar_correo_reserva(nombre, correo, pelicula, boletos, img_byte_arr.getvalue())
 
             # Mostrar el código QR en la página
