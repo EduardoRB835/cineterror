@@ -53,35 +53,43 @@ def index():
 def reservar(pelicula):
     if request.method == 'POST':
         nombre = request.form['nombre']
-        correo = request.form['correo']  # Capturar el correo ingresado por el usuario
+        correo = request.form['correo']
         boletos = int(request.form['boletos'])
-
+        
         if peliculas[pelicula]['disponible'] >= boletos:
             peliculas[pelicula]['disponible'] -= boletos
-
+            
+            # Calcular el total
+            costo_por_boleto = 10
+            total = boletos * costo_por_boleto
+            
+            # Agrega el número de boletos a la información de la película
+            peliculas[pelicula]['boletos'] = boletos
+            
             # Generar código QR con toda la información necesaria
             qr_data = (f"Reserva de {nombre} para {pelicula}\n"
                        f"Boletos: {boletos}\n"
+                       f"Costo total: {total} pesos\n"
                        f"Hora: {peliculas[pelicula]['hora']}\n"
-                       f"Lugar: SALA P")  # Agregar el lugar aquí
-
+                       f"Lugar: SALA P")
+            
             img = qrcode.make(qr_data)
             img_byte_arr = io.BytesIO()
             img.save(img_byte_arr, format='PNG')
             img_byte_arr.seek(0)  # Mover el puntero al inicio
-
+            
             # Convertir a Base64 para mostrar en la página
             img_base64 = base64.b64encode(img_byte_arr.getvalue()).decode('utf-8')
-
+            
             # Enviar correo con el código QR adjunto
             enviar_correo_reserva(nombre, correo, pelicula, boletos, img_byte_arr.getvalue())
-
+            
             # Mostrar el código QR en la página
-            return render_template('qr.html', img_str=img_base64, info=peliculas[pelicula], pelicula=pelicula)
+            return render_template('qr.html', img_str=img_base64, info=peliculas[pelicula], pelicula=pelicula, total=total)
 
         else:
             return f"Lo siento, solo quedan {peliculas[pelicula]['disponible']} boletos disponibles."
-
+    
     return render_template('reserva.html', pelicula=pelicula, disponible=peliculas[pelicula]['disponible'])
 
 
