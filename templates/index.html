@@ -15,6 +15,7 @@
         <div class="pelicula">
             <img src="{{ url_for('static', filename=info['imagen']) }}" alt="{{ pelicula }}">
             <h2>{{ pelicula }}</h2>
+            <p><strong>Fecha;</strong> 25 de octubre</p>
             <p><strong>Hora:</strong> {{ info['hora'] }}</p>
             <p><strong>Sala:</strong> SALA P</p> <!-- Agregado aquí -->
             <p><strong>Boletos disponibles:</strong> <span class="available">{{ info['disponible'] }}</span></p>
