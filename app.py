@@ -12,7 +12,7 @@ app = Flask(__name__)
 peliculas = {
     'La Sutancia': {'hora': '10:00 -12:20', 'disponible': 0, 'imagen': 'images/sustancia.webp'},
     'Hereditary': {'hora': '12:30-14:30', 'disponible': 76, 'imagen': 'images/Hereditary.webp'},
-    'La Sutancia': {'hora': '14:45-17:05', 'disponible': 76, 'imagen': 'images/sustancia.webp'}
+    'La Sutancia otra vez': {'hora': '14:45-17:05', 'disponible': 76, 'imagen': 'images/sustancia.webp'}
 }
 
 # Configuración de correo (modifica con tus datos)
